@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EasyOCR Document Upload</title>
+</head>
+<body>
+    <h1>Upload an Image or PDF for Text Extraction</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".pdf,image/*" required>
+        <button type="submit">Upload and Read Text</button>
+    </form>
+
+    {% if text %}
+    <h2>Full Extracted Text:</h2>
+    <pre>{{ text }}</pre>
+    {% endif %}
+
+    {% if chunks %}
+    <h2>Text Chunks for Embedding:</h2>
+    <ol>
+        {% for chunk in chunks %}
+        <li><pre>{{ chunk }}</pre></li>
+        {% endfor %}
+    </ol>
+    {% endif %}
+</body>
+</html>
